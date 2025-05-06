@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AquaGen - Reliable Hydro Power Sources</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f8ff;
+      color: #333;
+    }
+    header {
+      background: #0077be;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    .map-container {
+      height: 400px;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .payment-section {
+      margin-top: 30px;
+    }
+    button {
+      background-color: #0077be;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to AquaGen</h1>
+    <p>Access the most reliable water-based electricity sources near you.</p>
+  </header>
+  <main>
+    <p>Explore our interactive map to find hydro power sources. A small fee is required for full access.</p>
+    <div class="payment-section">
+      <button onclick="unlockMap()">Pay & Access Map</button>
+    </div>
+    <div id="map" class="map-container" style="display:none;"></div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    function unlockMap() {
+      alert("Payment successful! Unlocking map...");
+      document.getElementById("map").style.display = "block";
+      initMap();
+    }
+
+    function initMap() {
+      var map = L.map('map').setView([14.5995, 120.9842], 6);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+      }).addTo(map);
+      L.marker([14.5995, 120.9842]).addTo(map)
+        .bindPopup('Reliable Hydro Source - Pasig River')
+        .openPopup();
+    }
+  </script>
+</body>
+</html>
